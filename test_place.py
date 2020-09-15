@@ -12,14 +12,14 @@ def run_tests():
     assert default_place.name == ""
     assert default_place.country == ""
     assert default_place.priority == 0
-    assert not default_place.is_visited
 
     # Test initial-value place
     print("Test initial-value place:")
     new_place = Place("Malagar", "Spain", 1, False)
-    # TODO: Write tests to show this initialisation works
-
-    # TODO: Add more tests, as appropriate, for each method
+    # Write tests to show this initialisation works
+    print(new_place)
+    # Add more tests, as appropriate, for each method
+    print(new_place.is_important())
 
 
 run_tests()
