@@ -50,6 +50,7 @@ class PlaceCollection:
         self.places.append(place)
 
     def get_num_of_unvisited(self):
+        """return a unvisited number"""
         unvisited_num = 0
         for place in self.places:
             if not place.visit:
@@ -57,6 +58,7 @@ class PlaceCollection:
         return unvisited_num
 
     def sort(self, way):
+        """sort places list"""
         if way == 'PRIORITY':
             self.places = sorted(self.places, key=lambda place: (place.visit, int(place.priority)))
         if way == 'COUNTRY':

@@ -10,7 +10,6 @@ GitHub URL: https://github.com/JCUS-CP1404/assignment-2-travel-tracker-Asakura-H
 
 class Place:
     """Create the place class"""
-    # place_num = 0
 
     def __init__(self, name="", country="", priority=0, visit=False):
         """Create a constructor"""
