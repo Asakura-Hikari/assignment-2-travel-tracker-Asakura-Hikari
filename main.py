@@ -115,21 +115,29 @@ class TravelTrackerApp(App):
 
     def press_entry(self, instance):
         """give functions when dynamic button be clicked"""
-        # change color and text between visited and unvisited
         for place in self.place_collection.places:
-            if str(place) == instance.text and not place.visit:
-                self.status_text = "You visited {}, Great travelling!".format(place.name)
-                self.root.ids.show_text.text = self.status_text
-                place.visit = True
-                self.clear_all()
-                self.create_list()
-                self.root.ids.show_unvisited_num.text = "Place to visit: {}".format(self.place_collection.
-                                                                                    get_num_of_unvisited())
+            # find place in list
+            if str(place) == instance.text:
+                # judge is place visited or not
+                if place.visit:
+                    # judge is place important or not
+                    if place.is_important():
+                        self.status_text = "You need to visit {}. Get going!".format(place.name)
+                        self.root.ids.show_text.text = self.status_text
+                    else:
+                        self.status_text = "You need to visit {}.".format(place.name)
+                        self.root.ids.show_text.text = self.status_text
+                    place.visit = False
+                elif not place.visit:
+                    # same as top one
+                    if place.is_important():
+                        self.status_text = "You visited {}, Great travelling!".format(place.name)
+                        self.root.ids.show_text.text = self.status_text
+                    else:
+                        self.status_text = "You visited {}.".format(place.name)
+                        self.root.ids.show_text.text = self.status_text
+                    place.visit = True
 
-            if str(place) == instance.text and place:
-                self.status_text = "You need to visit {}. Get going!".format(place.name)
-                self.root.ids.show_text.text = self.status_text
-                place.visit = False
                 self.clear_all()
                 self.create_list()
                 self.root.ids.show_unvisited_num.text = "Place to visit: {}".format(self.place_collection.

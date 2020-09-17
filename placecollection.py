@@ -1,4 +1,8 @@
-"""..."""
+"""
+Name: Chaoyu Sun
+Date started: 10/September/2020
+GitHub URL: https://github.com/JCUS-CP1404/assignment-2-travel-tracker-Asakura-Hikari
+"""
 
 # Create your PlaceCollection class in this file
 import operator
@@ -59,9 +63,11 @@ class PlaceCollection:
 
     def sort(self, way):
         """sort places list"""
+        if way == 'VISITED':
+            self.places = sorted(self.places, key=lambda place: place.visit)
         if way == 'PRIORITY':
-            self.places = sorted(self.places, key=lambda place: (place.visit, int(place.priority)))
+            self.places = sorted(self.places, key=lambda place: int(place.priority))
         if way == 'COUNTRY':
-            self.places = sorted(self.places, key=lambda place: (place.visit, place.country))
+            self.places = sorted(self.places, key=lambda place: place.country)
         if way == 'NAME':
-            self.places = sorted(self.places, key=lambda place: (place.visit, place.name))
+            self.places = sorted(self.places, key=lambda place: place.name)

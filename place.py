@@ -38,7 +38,7 @@ class Place:
 
     def is_important(self):
         """Determine if a place has a priority <= 2"""
-        if self.priority <= 2:
+        if int(self.priority) <= 2:
             return True
         else:
             return False
